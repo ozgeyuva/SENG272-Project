@@ -1,0 +1,62 @@
+package model;
+import java.util.*;
+
+public class ScenarioRepository {
+    private static Map<String, List<String>> scenarios = new HashMap<>();
+
+    static {
+        scenarios.put("Education", Arrays.asList(
+                "Scenario C — Team Alpha",
+                "Scenario D — Team Beta"
+        ));
+
+        scenarios.put("Health", Arrays.asList(
+                "Scenario A — Clinic One",
+                "Scenario B — Hospital Plus"
+        ));
+    }
+
+    public static List<String> getScenarioNames(String mode) {
+        return scenarios.getOrDefault(mode, new ArrayList<>());
+    }
+    public static List<Dimension> getScenario(String qualityType, String mode, String scenarioName) {
+
+        if (mode.equals("Education")) {
+            return buildEducationScenario();
+        } else {
+            return buildHealthScenario();
+        }
+    }
+
+    private static List<Dimension> buildEducationScenario() {
+
+        List<Dimension> dims = new ArrayList<>();
+
+        Dimension usability = new Dimension("Usability", 25);
+        usability.addMetric(new Metric("SUS Score", 50, "Higher", 0, 100, "points"));
+        usability.addMetric(new Metric("Onboarding Time", 50, "Lower", 0, 60, "min"));
+
+        Dimension performance = new Dimension("Performance", 20);
+        performance.addMetric(new Metric("Video Start Time", 50, "Lower", 0, 15, "sec"));
+        performance.addMetric(new Metric("Concurrent Exams", 50, "Higher", 0, 600, "users"));
+
+        dims.add(usability);
+        dims.add(performance);
+
+        return dims;
+    }
+
+    private static List<Dimension> buildHealthScenario() {
+
+        List<Dimension> dims = new ArrayList<>();
+
+        Dimension usability = new Dimension("Usability", 25);
+        usability.addMetric(new Metric("Doctor UI Score", 50, "Higher", 0, 100, "points"));
+        usability.addMetric(new Metric("Registration Time", 50, "Lower", 0, 30, "min"));
+
+        dims.add(usability);
+
+        return dims;
+    }
+}
+
