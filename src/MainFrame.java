@@ -25,15 +25,12 @@ public class MainFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        // Step Indicator
         stepIndicatorPanel = new StepIndicatorPanel();
         add(stepIndicatorPanel, BorderLayout.NORTH);
 
-        // Card Layout
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        // Paneller
         mainPanel.add(new Step1Panel(this), "step1");
         mainPanel.add(new Step2Panel(this), "step2");
         mainPanel.add(new Step3Panel(this), "step3");
@@ -42,7 +39,6 @@ public class MainFrame extends JFrame {
 
         add(mainPanel, BorderLayout.CENTER);
 
-        // başlangıç step
         stepIndicatorPanel.updateSteps(1);
     }
 
