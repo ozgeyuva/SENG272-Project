@@ -21,10 +21,9 @@ javac *.java model/*.java
 Run Instructions:
 java Main
 
-java -cp out Main
-
 Screenshots:
-Application screenshots are included in the screenshots folder.
+Application screenshots are included in the main project folder as:
+1.png, 2.png, 3.png, 4.png, 5.png
 
 Example:
 screenshots/5.png
